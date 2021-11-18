@@ -75,7 +75,7 @@ const CartSummery = ({ total, cart }) => {
 					<p>total price</p>
 					<p>{total} $</p>
 				</nav>
-				<Link to="/checkout">
+				<Link to="/sign-up?redirect=/checkout">
 					<button className="w-full bg-red-500 rounded-md text-white">Go to Checkout</button>
 				</Link>
 			</nav>

@@ -4,14 +4,25 @@ import * as yup from "yup";
 import Input from "./Input";
 import LoginService from "../Services/LoginService";
 import { useNavigate } from "react-router-dom";
-import {useAuthAction} from "../Context/AuthProvider"
+import { useAuthAction, useAuth } from "../Context/AuthProvider";
+import useQuery from "../hooks/useQuery";
 
 const Login = () => {
 	const [FormValue, setFormValue] = useState(null);
 	const [error, setError] = useState(null);
 	let navigate = useNavigate(); // for push yo pagehome.js
 	const setAuth = useAuthAction();
-	
+	const query = useQuery();
+	const redirect = query.get("redirect") || "/";
+	console.log(query.get("redirect"));
+	const userData = useAuth();
+
+	useEffect(() => {
+		if (userData) {
+			navigate(redirect);
+		}
+	}, [redirect, userData]);
+
 	const initialValues = {
 		email: "",
 		password: "",
@@ -25,7 +36,7 @@ const Login = () => {
 			// localStorage.setItem("authState", JSON.stringify(data))
 			// console.log(data);
 			setError(null);
-			navigate("/");
+			navigate(redirect);
 		} catch (error) {
 			// console.log(error);
 			if (error.response && error.response.data.message) {
@@ -66,6 +77,6 @@ const Login = () => {
 			</form>
 		</nav>
 	);
-};;
+};
 
 export default Login;

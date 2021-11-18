@@ -14,7 +14,7 @@ const MainRoutes = () => {
 				<Route path="/cart" element={<PageCart />} />
 				<Route path="/checkout" element={<PageCheckout />} />
 				<Route path="/log-in" element={<PageLogin />} />
-				<Route path="/sigh-up" element={<PageSignUp />} />
+				<Route path="/sign-up" element={<PageSignUp />} />
 				<Route path="/Profile" element={<PageProfile />} />
 			</Routes>
 		</section>

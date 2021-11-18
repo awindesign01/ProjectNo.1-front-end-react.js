@@ -4,14 +4,24 @@ import * as yup from "yup";
 import Input from "./Input";
 import SingUpService from "../Services/SingUpService";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthAction } from "../Context/AuthProvider";
+import { useAuth, useAuthAction } from "../Context/AuthProvider";
+import useQuery from "../hooks/useQuery";
 
 const SingUp = () => {
-	
 	const [FormValue, setFormValue] = useState(null);
 	const [error, setError] = useState(null);
 	let navigate = useNavigate(); // for push yo pagehome.js
 	const setAuth = useAuthAction();
+	const query = useQuery();
+	const redirect = query.get("redirect") || "/";
+	console.log(query.get("redirect"));
+	const userData = useAuth();
+
+	useEffect(() => {
+		if (userData) {
+			navigate(redirect);
+		}
+	}, [redirect, userData]);
 
 	const initialValues = {
 		name: "",
@@ -34,7 +44,7 @@ const SingUp = () => {
 			// localStorage.setItem("authState", JSON.stringify(data));
 			// console.log(data);
 			setError(null);
-			navigate("/");
+			navigate(redirect);
 		} catch (error) {
 			// console.log(error.response.data.message);
 			if (error.response && error.response.data.message) {
@@ -87,7 +97,7 @@ const SingUp = () => {
 					Sign up
 				</button>
 				{error && <p style={{ color: "red" }}>{error}</p>}
-				<Link to="/log-in">
+				<Link to={`/log-in?redirect=${redirect}`}>
 					<p>already login ?</p>
 				</Link>
 			</form>
