@@ -4,6 +4,7 @@ import PageCheckout from "./Page/PageCheckout";
 import PageHome from "./Page/PageHome";
 import PageLogin from "./Page/PageLogin";
 import PageSignUp from "./Page/PageSignUp";
+import PageProfile from "./Page/PageProfile";
 
 const MainRoutes = () => {
 	return (
@@ -14,6 +15,7 @@ const MainRoutes = () => {
 				<Route path="/checkout" element={<PageCheckout />} />
 				<Route path="/log-in" element={<PageLogin />} />
 				<Route path="/sigh-up" element={<PageSignUp />} />
+				<Route path="/Profile" element={<PageProfile />} />
 			</Routes>
 		</section>
 	);

@@ -8,7 +8,6 @@ const PageHome = () => {
 	const dispatch = useCartActions();
 	const addProductHandler = (event) => {
 		// console.log(event);
-
 		dispatch({ type: "ADD_TO_CART", payload: event });
 	};
 	return (
@@ -31,8 +30,8 @@ const PageHome = () => {
 									<h1 className="my-2 text-md text-gray-600">{e.name}</h1>
 								</nav>
 								<nav className="w-1/3 h-full flex justify-end items-end">
-									<h1 className=" text-xl text-red-500">${e.offPrice}</h1>
-									<h1 className="ml-2 text-xl text-red-500 line-through">${e.price}</h1>
+									{/* <h1 className=" text-xl text-red-500">${e.offPrice}</h1> */}
+									<h1 className="ml-2 text-xl text-red-500">${e.price}</h1>
 								</nav>
 							</nav>
 							<nav className="h-1/2 w-full flex justify-around items-center">
@@ -67,5 +66,3 @@ const PageHome = () => {
 };
 
 export default PageHome;
-
-

@@ -1,9 +1,9 @@
-import SignIn from "../Common/SignIn";
+import SignUp from "../Common/SignUp";
 
 const PageSignUp = () => {
 	return (
 		<nav>
-			<SignIn />
+			<SignUp />
 		</nav>
 	);
 };

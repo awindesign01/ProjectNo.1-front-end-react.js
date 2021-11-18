@@ -2,15 +2,18 @@ import "./App.css";
 import CartProviders from "./Context/CartProviders";
 import Layout from "./Layout/Layout";
 import MainRoutes from "./MainRoutes";
+import AuthProvider from "./Context/AuthProvider";
 
 function App() {
 	return (
 		<section className="mx-auto App">
-			<CartProviders>
-				<Layout>
-					<MainRoutes />
-				</Layout>
-			</CartProviders>
+			<AuthProvider>
+				<CartProviders>
+					<Layout>
+						<MainRoutes />
+					</Layout>
+				</CartProviders>
+			</AuthProvider>
 		</section>
 	);
 }
